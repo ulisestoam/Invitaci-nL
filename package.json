@@ -1,0 +1,15 @@
+{
+  "name": "cumpleanos-leonardo",
+  "version": "1.0.0",
+  "description": "Invitación de cumpleaños de Leonardo - Fiesta de Lucha Libre",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
