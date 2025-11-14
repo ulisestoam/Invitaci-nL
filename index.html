@@ -5,34 +5,42 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cumpleaños de Leonardo</title>
+    <!-- Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <div id="app">
-      <!-- Botón flotante de música -->
+      <!-- ===================================== -->
+      <!-- BOTÓN FLOTANTE DE MÚSICA -->
+      <!-- Control para reproducir/pausar música de fondo -->
+      <!-- ===================================== -->
       <button id="musicBtn" class="music-btn" aria-label="Reproducir música">
         <i class="fas fa-music"></i>
       </button>
 
+      <!-- Audio de fondo (música de lucha libre) -->
       <audio id="backgroundMusic" loop>
         <source src="/assets/audio/mucha1.mp3" type="audio/mpeg">
       </audio>
 
-      <!-- Header -->
+      <!-- ===================================== -->
+      <!-- SECCIÓN: PORTADA/HERO -->
+      <!-- Imagen de fondo con nombre y tema de la fiesta -->
+      <!-- ===================================== -->
       <header class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <div class="decoration decoration-top-left">
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="decoration decoration-top-right">
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="hero-icon">
-            <i class="fas fa-mask"></i>
-          </div>
-          <h1 class="birthday-name">¡7 AÑOS! <br>Leonardo Chapa Chávez</h1>
+          <h1 class="birthday-name">
+            <i class="fas fa-star decoration-inline"></i>
+            ¡7 AÑOS!
+            <i class="fas fa-star decoration-inline"></i>
+            <br>
+            <i class="fas fa-star decoration-inline"></i>
+            Leonardo
+            <i class="fas fa-star decoration-inline"></i>
+          </h1>
           <p class="birthday-text">Fiesta de Lucha Libre</p>
           <div class="hero-decorations">
             <i class="fas fa-bolt"></i>
@@ -42,9 +50,12 @@
         </div>
       </header>
 
-      <!-- Countdown -->
+      <!-- ===================================== -->
+      <!-- SECCIÓN: CONTADOR REGRESIVO -->
+      <!-- Cuenta regresiva hasta el día de la fiesta -->
+      <!-- ===================================== -->
       <section class="countdown-section">
-        <h2 class="section-title">Cuenta Regresiva</h2>
+        <h2 class="section-title" id="countdownTitle">Cuenta Regresiva</h2>
         <div class="countdown" id="countdown">
           <div class="countdown-item">
             <span class="countdown-value" id="days">00</span>
@@ -65,7 +76,10 @@
         </div>
       </section>
 
-      <!-- Información del Evento -->
+      <!-- ===================================== -->
+      <!-- SECCIÓN: INFORMACIÓN DEL EVENTO -->
+      <!-- Detalles de fecha, hora y ubicación con botones de acción -->
+      <!-- ===================================== -->
       <section class="events-section">
         <div class="container">
           <!-- Fiesta -->
@@ -89,7 +103,7 @@
               </button>
               <p class="event-info">
                 <i class="fas fa-map-marker-alt"></i>
-                <strong>Lugar:</strong> Salón de Eventos Campeón
+                <strong>Lugar:</strong> Casa de mis abuelitos paternos
               </p>
               <button class="event-btn" onclick="confirmAttendance()">
                 <i class="fas fa-check-circle"></i>
@@ -97,7 +111,7 @@
               </button>
               <p class="event-info">
                 <i class="fas fa-location-dot"></i>
-                <strong>Dirección:</strong> Av. Actopan #20 San Gregorio Atla., Xoch. 16600, CDMX</p>
+                <strong>Dirección:</strong> Av. Actopan #20 San Gregorio</p>
               <button class="event-btn" onclick="openMaps('fiesta')">
                 <i class="fas fa-map"></i>
                 ¿Cómo llegar?
@@ -107,7 +121,10 @@
         </div>
       </section>
 
-      <!-- Galería de fotos -->
+      <!-- ===================================== -->
+      <!-- SECCIÓN: GALERÍA DE FOTOS -->
+      <!-- Slider/carrusel de fotos con navegación táctil -->
+      <!-- ===================================== -->
       <section class="gallery-section">
         <h2 class="section-title">Momentos Épicos</h2>
         <div class="slider-container">
@@ -165,10 +182,14 @@
             <i class="fas fa-chevron-right"></i>
           </button>
         </div>
+        <!-- Indicadores de navegación (dots) -->
         <div class="slider-dots" id="sliderDots"></div>
       </section>
 
-      <!-- Mesa de regalos -->
+      <!-- ===================================== -->
+      <!-- SECCIÓN: MESA DE REGALOS (DESHABILITADA) -->
+      <!-- Sección comentada para uso futuro -->
+      <!-- ===================================== -->
       <!--<section class="gifts-section">
         <h2 class="section-title">Mesa de Regalos</h2>
         <div class="gifts-container">
@@ -204,7 +225,10 @@
         </div>
       </section>-->
 
-      <!-- Redes Sociales -->
+      <!-- ===================================== -->
+      <!-- SECCIÓN: COMPARTIR EN REDES SOCIALES -->
+      <!-- Invitación a compartir en Instagram con hashtag -->
+      <!-- ===================================== -->
       <section class="instagram-section">
         <div class="instagram-content">
           <div class="instagram-icon">
@@ -220,19 +244,23 @@
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- ===================================== -->
+      <!-- FOOTER -->
+      <!-- Créditos y contacto del Studio Digital -->
+      <!-- ===================================== -->
       <footer class="footer">
         <div class="footer-content">
           <p class="footer-text">¡Que gane la diversión!</p>
           <div class="footer-divider"></div>
           <p class="footer-credits">
             <i class="fas fa-bolt"></i>
-            Una invitación llena de acción elaborada por <strong>Studio Digital Mizunara</strong>
+            Una invitación llena de acción elaborada por <strong onclick="contactStudio()">Studio Digital Mizunara</strong>
           </p>
         </div>
       </footer>
     </div>
 
+    <!-- Script principal con toda la funcionalidad interactiva -->
     <script type="module" src="/js/main.js"></script>
   </body>
 </html>

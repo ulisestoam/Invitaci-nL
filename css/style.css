@@ -1,11 +1,29 @@
+/* ========================================
+   FUENTES E IMPORTACIONES
+   ======================================== */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap');
 
+/* ========================================
+   RESET Y CONFIGURACIÓN GLOBAL
+   ======================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+}
+
+/* ========================================
+   VARIABLES CSS (COLORES Y TEMAS)
+   Paleta de colores de lucha libre
+   ======================================== */
 :root {
   --primary-color: #ff3d00;
   --secondary-color: #ffc107;
@@ -21,6 +39,9 @@
   --shadow: rgba(0, 0, 0, 0.2);
 }
 
+/* ========================================
+   ESTILOS BASE DEL BODY
+   ======================================== */
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text-dark);
@@ -30,11 +51,18 @@ body {
   min-height: 100vh;
 }
 
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
 #app {
   width: 100%;
   min-height: 100vh;
 }
 
+/* ========================================
+   BOTÓN FLOTANTE DE MÚSICA
+   Botón para controlar la música de fondo
+   ======================================== */
 .music-btn {
   position: fixed;
   bottom: 30px;
@@ -80,13 +108,17 @@ body {
   }
 }
 
+/* ========================================
+   SECCIÓN HERO/PORTADA
+   Imagen principal con el nombre del cumpleañero
+   ======================================== */
 .hero {
   position: relative;
   height: 100vh;
   min-height: 600px;
   background:
-    linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(30, 58, 138, 0.85) 100%),
-    url('/assets/img/leo0010.jpg') center/cover;
+    linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(30, 58, 138, 0.5) 100%),
+    url('/assets/img/leo009.jpg') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,6 +247,15 @@ body {
   transform: skew(-5deg);
 }
 
+.decoration-inline {
+  font-size: 3rem;
+  margin: 0 15px;
+  display: inline-block;
+  animation: pulse-icon 1.5s ease infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  vertical-align: middle;
+}
+
 @keyframes glow {
   0%, 100% {
     text-shadow:
@@ -330,15 +371,28 @@ body {
   border-radius: 20px;
   min-width: 140px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeIn 1s ease;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-.countdown-item:hover {
-  transform: translateY(-8px);
+.countdown-item:hover,
+.countdown-item:active {
+  transform: translateY(-8px) translateZ(0);
   background: rgba(167, 157, 131, 0.151);
   box-shadow: 0 15px 50px rgba(94, 255, 0, 0.3);
   border-color: rgba(187, 255, 0, 0.3);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .countdown-item:active {
+    transform: scale(0.98) translateZ(0);
+  }
 }
 
 @keyframes fadeIn {
@@ -389,26 +443,43 @@ body {
   border-radius: 25px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-.event-card:hover {
-  transform: translateY(-12px);
+.event-card:hover,
+.event-card:active {
+  transform: translateY(-12px) translateZ(0);
    background: rgba(167, 157, 131, 0.151);
   box-shadow: 0 15px 50px rgba(94, 255, 0, 0.3);
   border-color: rgba(187, 255, 0, 0.3);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .event-card:active {
+    transform: scale(0.98) translateZ(0);
+  }
 }
 
 .event-icon {
   font-size: 70px;
   color: var(--secondary-color);
   margin-bottom: 25px;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 4px 12px rgba(255, 61, 0, 0.3));
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-.event-card:hover .event-icon {
-  transform: scale(1.2) rotate(10deg);
+.event-card:hover .event-icon,
+.event-card:active .event-icon {
+  transform: scale(1.2) rotate(10deg) translateZ(0);
 }
 
 .event-title {
@@ -450,25 +521,42 @@ body {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(255, 61, 0, 0.3);
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  touch-action: manipulation;
 }
 
-.event-btn:hover {
-  transform: scale(1.08);
+.event-btn:hover,
+.event-btn:active {
+  transform: scale(1.08) translateZ(0);
   box-shadow: 0 8px 25px rgba(255, 61, 0, 0.5);
 }
 
-.event-btn i {
-  transition: transform 0.3s ease;
+@media (hover: none) and (pointer: coarse) {
+  .event-btn:active {
+    transform: scale(0.96) translateZ(0);
+  }
 }
 
-.event-btn:hover i {
-  transform: scale(1.2);
+.event-btn i {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.event-btn:hover i,
+.event-btn:active i {
+  transform: scale(1.2) translateZ(0);
 }
 
 .gallery-section {
@@ -497,10 +585,13 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: opacity;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .slide.active {
@@ -550,7 +641,7 @@ body {
 .slider-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateZ(0);
   background: var(--glass-light);
   backdrop-filter: blur(10px);
   border: 2px solid var(--glass-border);
@@ -560,24 +651,41 @@ body {
   font-size: 22px;
   color: var(--secondary-color);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  will-change: transform;
+  -webkit-transform: translateY(-50%) translateZ(0);
+  touch-action: manipulation;
 }
 
-.slider-btn:hover {
+.slider-btn:hover,
+.slider-btn:active {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--text-dark);
-  transform: translateY(-50%) scale(1.15);
+  transform: translateY(-50%) scale(1.15) translateZ(0);
   box-shadow: 0 8px 30px rgba(255, 61, 0, 0.5);
 }
 
-.slider-btn i {
-  transition: transform 0.3s ease;
+@media (hover: none) and (pointer: coarse) {
+  .slider-btn:active {
+    transform: translateY(-50%) scale(0.95) translateZ(0);
+  }
 }
 
-.slider-btn:hover i {
-  transform: scale(1.2);
+.slider-btn i {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.slider-btn:hover i,
+.slider-btn:active i {
+  transform: scale(1.2) translateZ(0);
 }
 
 .slider-btn-prev {
@@ -708,6 +816,14 @@ body {
   padding: 60px 40px;
   border-radius: 25px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.instagram-content:hover {
+  transform: translateY(-12px);
+  background: rgba(167, 157, 131, 0.151);
+  box-shadow: 0 15px 50px rgba(94, 255, 0, 0.3);
+  border-color: rgba(187, 255, 0, 0.3);
 }
 
 .instagram-icon {
@@ -725,6 +841,8 @@ body {
   margin: 20px 0;
   font-weight: 700;
   text-transform: uppercase;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .instagram-text {
@@ -789,13 +907,41 @@ body {
   font-weight: 600;
 }
 
+.footer-credits strong {
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: underline;
+}
+
+.footer-credits strong:hover {
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+}
+
 @media (max-width: 768px) {
+  .hero-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+
   .birthday-name {
     font-size: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .decoration-inline {
+    font-size: 1.8rem;
+    margin: 0 10px;
   }
 
   .birthday-text {
     font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+
+  .decoration {
+    font-size: 40px;
   }
 
   .section-title {
@@ -836,19 +982,45 @@ body {
     bottom: 20px;
     right: 20px;
   }
-
-  .decoration {
-    font-size: 40px;
-  }
 }
 
 @media (max-width: 480px) {
-  .birthday-name {
-    font-size: 2.2rem;
-  }
-
   .hero {
     min-height: 500px;
+  }
+
+  .hero-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+
+  .birthday-name {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .decoration-inline {
+    font-size: 1.2rem;
+    margin: 0 8px;
+  }
+
+  .birthday-text {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .decoration {
+    font-size: 30px;
+    top: 20px;
+  }
+
+  .decoration-top-left {
+    left: 20px;
+  }
+
+  .decoration-top-right {
+    right: 20px;
   }
 
   .slider {
@@ -860,7 +1032,7 @@ body {
   }
 
   .hashtag {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .instagram-content {
