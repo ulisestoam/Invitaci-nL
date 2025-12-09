@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cuenta días, horas, minutos y segundos hasta la fiesta
   // ========================================
   function updateCountdown() {
-    const weddingDate = new Date('2025-12-06T14:00:00').getTime();
+    const weddingDate = new Date('2025-12-31T14:00:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
 
